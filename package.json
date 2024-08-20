@@ -16,7 +16,7 @@
     "package.json",
     "config.json"
   ],
-  "author": "",
+  "author": "Mai@Developer <developer.mai@outlook.com>",
   "license": "MIT",
   "devDependencies": {
     "@electron-forge/cli": "^6.4.2",
