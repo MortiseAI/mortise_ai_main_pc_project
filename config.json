@@ -1,0 +1,9 @@
+{
+  "MaiDebug": false,
+  "MaiSplashPage": "splash",
+  "MaiLoginPage": "login",
+  "MaiMainPage": "main",
+  "MaiAgentPage": "agent",
+  "MaiKnowledgePage": "knowledge",
+  "MaiCodePage": "code"
+}

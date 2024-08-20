@@ -1,0 +1,44 @@
+{
+  "name": "com.mortise.ai.alpha",
+  "version": "0.0.1",
+  "description": "Mortise AI PC Project",
+  "main": "./dist/MaiMain.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "prestart": "rm -rf ./dist/ & tsc"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "package.json",
+    "config.json"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
+    "@electron-forge/maker-deb": "^6.1.1",
+    "@electron-forge/maker-rpm": "^6.1.1",
+    "@electron-forge/maker-squirrel": "^6.1.1",
+    "@electron-forge/maker-zip": "^6.1.1",
+    "@types/crypto-js": "^4.2.1",
+    "@types/uuid": "^9.0.7",
+    "electron": "^24.8.8",
+    "electron-rebuild": "^3.2.9",
+    "electron-reloader": "^1.2.3",
+    "typescript": "5.0.4"
+  },
+  "dependencies": {
+    "@mai-alpha/mai-mlc-core-tsc": "^0.0.2-snapshot",
+    "@mai-alpha/mai-native-agent": "^0.0.5-snapshot",
+    "@mai-alpha/mai-native-code": "^0.0.5-snapshot",
+    "@mai-alpha/mai-native-core": "^0.0.5-snapshot",
+    "@mai-alpha/mai-native-embedding": "^0.0.5-snapshot",
+    "@mai-alpha/mai-native-knowledge": "^0.0.5-snapshot",
+    "@mai-alpha/mai-native-llms": "^0.0.5-snapshot",
+    "@mai-alpha/mai-native-main": "^0.0.5-snapshot"
+  }
+}
