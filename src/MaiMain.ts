@@ -28,6 +28,11 @@ let _codeWindow: any;
 
 let _mainNativeLoginContainer, _mainNativeContainer: MlcContainer | null
 
+const getMaiPageUrl = (page: string) => {
+    // return `http://localhost:22988/${page}.html`
+    return `https://native.mortiseai.com/${page}.html`
+}
+
 const createSplashWindow = () => {
     startMaiNativeLoginContainer()
     if (!_primaryDisplay) {
@@ -235,6 +240,7 @@ const createCodeWindow = (params?: any) => {
 
 app.whenReady().then(() => {
     initMaiNative()
+    initMaiNativeDevelop()
     initMaiShortcut()
     registryMaiBridge()
     setTimeout(() => {
@@ -299,6 +305,21 @@ function initMaiNative() {
         });
     }
 
+}
+
+function initMaiNativeDevelop() {
+    const _configFile = join(__dirname, "devconfig.json")
+    if (fs.existsSync(_configFile)) {
+        const _configContent = fs.readFileSync(_configFile, 'utf8');
+        if (_configContent) {
+            const _configData = JSON.parse(_configContent)
+            if (_configData) {
+                Object.keys(_configData).forEach(key => {
+                    (global as any)[key] = _configData[key];
+                });
+            }
+        }
+    }
 }
 
 function initMaiShortcut() {
@@ -367,10 +388,6 @@ function handleMaiChangePage(event: any, data: any) {
                 break
         }
     }
-}
-
-function getMaiPageUrl(page: string) {
-    return `http://localhost:11111/${page}.html`
 }
 
 function startMaiNativeLoginContainer() {

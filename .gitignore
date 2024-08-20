@@ -4,6 +4,7 @@
 # 生产
 /build
 /publish
+devconfig.json
 
 # 缓存
 /.cache

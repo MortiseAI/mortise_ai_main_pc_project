@@ -1,3 +1,4 @@
+const fs = require("fs-extra");
 module.exports = {
     makers: [
         {
@@ -20,7 +21,12 @@ module.exports = {
     hooks: {
         generateAssets: async () => {
             const fs = require('fs-extra');
-            await fs.copy('config.json', 'dist/config.json');
+            if (fs.existsSync('config.json')) {
+                await fs.copy('config.json', 'dist/config.json');
+            }
+            if (fs.existsSync('devconfig.json')) {
+                await fs.copy('devconfig.json', 'dist/devconfig.json');
+            }
         },
     },
 };
