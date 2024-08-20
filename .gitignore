@@ -1,0 +1,48 @@
+# 依赖
+/node_modules
+
+# 生产
+/build
+/publish
+
+# 缓存
+/.cache
+/dist
+
+# 测试
+/coverage
+
+# 日志
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 编辑器目录和文件
+.idea
+*.swp
+*.swo
+*.sublime-workspace
+
+# 环境配置文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# WebStorm/IntelliJ
+.idea/
+*.iml
+*.iws
+
+# 其他通用IDE配置
+.vscode/
+*.code-workspace
+
+# 更多自定义忽略规则
+# 在这里根据需要添加任何其他文件或目录
