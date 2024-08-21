@@ -147,6 +147,7 @@ const createAgentWindow = (params?: any) => {
         _agentWindow = new BrowserWindow({
             width: Math.floor(width * 0.8),
             height: Math.floor(height * 0.8),
+            alwaysOnTop: true,
             backgroundColor: '#15161D',
             webPreferences: {
                 nodeIntegration: true,
@@ -186,6 +187,7 @@ const createKnowledgeWindow = (params?: any) => {
         _knowledgeWindow = new BrowserWindow({
             width: Math.floor(width * 0.8),
             height: Math.floor(height * 0.8),
+            alwaysOnTop: true,
             backgroundColor: '#15161D',
             webPreferences: {
                 nodeIntegration: true,
@@ -225,6 +227,7 @@ const createCodeWindow = (params?: any) => {
         _codeWindow = new BrowserWindow({
             width: Math.floor(width * 0.8),
             height: Math.floor(height * 0.8),
+            alwaysOnTop: true,
             backgroundColor: '#15161D',
             webPreferences: {
                 nodeIntegration: true,
@@ -236,6 +239,19 @@ const createCodeWindow = (params?: any) => {
         })
         _codeWindow.loadURL(codeURL)
     }
+}
+
+const defBrowserOpenUrl = (url: string, params?: any) => {
+    let openUrl = url
+    if (params) {
+        Object.keys(params).forEach((key, index) => {
+            openUrl += (index == 0 ? "?" : "&")
+            openUrl += `${key}=${params[key] ? params[key] : ""}`
+        });
+    }
+    const startCommand = process.platform === 'win32' ? 'start' : process.platform === 'darwin' ? 'open' : 'xdg-open';
+    const {exec} = require('child_process');
+    exec(`${startCommand} ${openUrl}`);
 }
 
 app.whenReady().then(() => {
@@ -385,6 +401,7 @@ function handleMaiChangePage(event: any, data: any) {
                 createCodeWindow(data.params)
                 break
             default:
+                defBrowserOpenUrl(data.page, data.params)
                 break
         }
     }
